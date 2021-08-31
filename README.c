@@ -19,16 +19,14 @@ typedef struct lstItem{
    struct lstItem *next;
 } lstProduto;
 
-/* Criação da lista: retorna uma lista vazia */
+// Criação da lista: retorna uma lista vazia
 lstProduto *cria_lista(){
    return NULL;
 }
-/* 
-   Imprime a lista.
-   Esta função é um exemplo de como percorrer uma lista encadeada.
-*/
+//    Imprime a lista.
+//    Esta função é um exemplo de como percorrer uma lista encadeada.
 void imprime_lista(lstProduto *lista){
-   /* "atual" é um ponteiro para o elemento da lista que está sendo examinado. Inicialmente, aponta para o primeiro elemento */
+//    "atual" é um ponteiro para o elemento da lista que está sendo examinado. Inicialmente, aponta para o primeiro elemento
    lstProduto *atual = lista; 
 
    while(atual!=NULL){
