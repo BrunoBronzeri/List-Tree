@@ -10,23 +10,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct{
    int number; 
 } produto;
-
 
 typedef struct lstItem{
    produto dado;
    struct lstItem *next;
 } lstProduto;
 
-
 /* Criação da lista: retorna uma lista vazia */
 lstProduto *cria_lista(){
    return NULL;
 }
-
 /* 
    Imprime a lista.
    Esta função é um exemplo de como percorrer uma lista encadeada.
@@ -40,7 +36,6 @@ void imprime_lista(lstProduto *lista){
       atual = atual->next;
    }
 }
-
 
 lstProduto *insere_no_fim(lstProduto *lista, produto dado){
 	
