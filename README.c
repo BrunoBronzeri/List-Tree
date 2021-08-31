@@ -1,3 +1,4 @@
+
 //List-Tree
 // Implementar um programa em linguagem C em que o usuário informe uma série de números
 // inteiros que devem ser armazenados em uma lista encadeada. O usuário poderá informar tantos
@@ -58,7 +59,7 @@ lstProduto *insere_no_fim(lstProduto *lista, produto dado){
 		while(ultimo->next != NULL)
 			ultimo=ultimo->next;
 		ultimo->next = novo;
-		novo->prev = ultimo;
+		//novo->prev = ultimo;
 	}
 	return lista;
 }
