@@ -37,7 +37,7 @@ void imprime_lista(lstProduto *lista){
    lstProduto *atual = lista; 
 
    while(atual!=NULL){
-      printf(">>%d", (*atual).dado);
+      printf("%d; ", atual->dado.number);
       atual = atual->next;
    }
 }
@@ -65,7 +65,7 @@ lstProduto *insere_no_fim(lstProduto *lista, produto dado){
 produto *novo_produto(){
    produto *novo = malloc(sizeof(produto));
    printf("Digite um número: ");
-   scanf("%d",((*novo).number));
+   scanf("%d", &((*novo).number));
    return novo;
 }
 
@@ -80,11 +80,11 @@ int main(void)
       printf("3 -> Inserir no inicio\n");
       printf("0 -> Parar\n");
 
-      scanf("%d" ,&auxiliar);
+      scanf("%d" , &auxiliar);
 
       if(auxiliar == 2){
          imprime_lista(LST);
-         printf("/n");
+         printf("\n");
       }
          
       if(auxiliar == 3){
