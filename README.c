@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 typedef struct{
    int number; 
@@ -68,20 +67,20 @@ int main(void)
 
    while(auxiliar != 0){
       printf("Especifique o comando:\n");
+      printf("1 -> Inserir no inicio\n");
       printf("2 -> Imprimir lista\n");
-      printf("3 -> Inserir no inicio\n");
       printf("0 -> Parar\n");
 
       scanf("%d" , &auxiliar);
-
+  
+      if(auxiliar == 1){
+         produto *novo = novo_produto(); 
+         LST = insere_no_fim(LST, *novo);
+      }
+	   
       if(auxiliar == 2){
          imprime_lista(LST);
          printf("\n");
-      }
-         
-      if(auxiliar == 3){
-         produto *novo = novo_produto(); 
-         LST = insere_no_fim(LST, *novo);
       }
    }
    return 0;
