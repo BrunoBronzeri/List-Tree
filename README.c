@@ -19,22 +19,41 @@ typedef struct no {
    struct no *next;
 } No;
 
-void adicionar(Lista* lista, No var){
-   No* new = malloc(sizeof(No));
-
-   new->number = var.number;
-
-   if (lista->first == NULL){
-      lista->first = new;
-   }
-   else{
-	No* atual = Lista->first; //começar no primeiro
-    	while (atual->next != NULL){ //navegar até ao fim
-        	atual = atual->next;
-    }
-
-    atual->prox = novo; //colocar o novo nó no fim
+lstProduto *insere_no_fim(lstProduto *lista, produto dado){
+	
+	lstProduto *novo = malloc(sizeof(lstProduto));
+	
+	novo->dado = dado;
+	novo->next = NULL;
+	
+	if(lista = NULL)
+		lista = novo;
+	else{
+		lstProduto *ultimo = lista;
+		while(ultimo->next != NULL)
+			ultimo=ultimo->next;
+		ultimo->next = novo;
+		novo->prev = ultimo;
+	}
+	return lista;
 }
+			
+// void adicionar(Lista* lista, No var){
+//    No* new = malloc(sizeof(No));
+
+//    new->number = var.number;
+
+//    if (lista->first == NULL){
+//       lista->first = new;
+//    }
+//    else{
+// 	No* atual = Lista->first; //começar no primeiro
+//     	while (atual->next != NULL){ //navegar até ao fim
+//         	atual = atual->next;
+//     }
+
+//     atual->prox = novo; //colocar o novo nó no fim
+// }
 
 int main(void)
 {  
