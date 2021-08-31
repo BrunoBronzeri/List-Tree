@@ -8,16 +8,41 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
-typedef struct lista {
-   struct no *first;
-} Lista;
+typedef struct{
+   char nome[30];
+   float preco; 
+} produto;
 
-typedef struct no {
-   int *number;
-   struct no *next;
-} No;
+
+typedef struct lstItem{
+   produto dado;
+   struct lstItem *next;
+} lstProduto;
+
+
+
+/* Criação da lista: retorna uma lista vazia */
+lstProduto *cria_lista(){
+   return NULL;
+}
+
+/* 
+   Imprime a lista.
+   Esta função é um exemplo de como percorrer uma lista encadeada.
+*/
+void print(lstProduto *lista){
+   /* "atual" é um ponteiro para o elemento da lista que está sendo examinado. Inicialmente, aponta para o primeiro elemento */
+   lstProduto *atual = lista; 
+
+   while(atual!=NULL){
+      printf(">>Nome: %s; Preco: %f\n", (*atual).dado.nome, atual->dado.preco);
+      atual = atual->next;
+   }
+}
+
 
 lstProduto *insere_no_fim(lstProduto *lista, produto dado){
 	
@@ -75,10 +100,9 @@ int main(void)
       }
          
       if(auxiliar == 3){
-         pessoa *p = novo_dado();
-         LST = insere_no_inicio(LST, *p);
+         produto *novo = novo_produto(); 
+         lista = insere_no_fim(lista, *novo);
       }
-
       if(auxiliar == 4){
          LST = inverte(LST);
       }
