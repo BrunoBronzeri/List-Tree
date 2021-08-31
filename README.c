@@ -26,3 +26,34 @@ lista *create_lista(){
 Tree *create_tree(){
 	return NULL;
 }
+
+int main(void)
+{  
+   int auxiliar = 9;
+   lista *LST = cria_lista();
+
+   while(auxiliar != 0){
+      printf("Especifique o comando:\n");
+      printf("2 -> Imprimir lista\n");
+      printf("3 -> Inserir no inicio\n");
+      printf("4 -> Inverter lista\n");
+      printf("0 -> Parar\n");
+
+      scanf("%d" ,&auxiliar);
+
+      if(auxiliar == 2){
+         imprime_lista(LST);
+         printf("\n");
+      }
+         
+      if(auxiliar == 3){
+         pessoa *p = novo_dado();
+         LST = insere_no_inicio(LST, *p);
+      }
+
+      if(auxiliar == 4){
+         LST = inverte(LST);
+      }
+   }
+   return 0;
+}
