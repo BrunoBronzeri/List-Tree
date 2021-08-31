@@ -1,4 +1,3 @@
-
 //List-Tree
 // Implementar um programa em linguagem C em que o usuário informe uma série de números
 // inteiros que devem ser armazenados em uma lista encadeada. O usuário poderá informar tantos
