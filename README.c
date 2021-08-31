@@ -80,6 +80,15 @@ lstProduto *insere_no_fim(lstProduto *lista, produto dado){
 //     atual->prox = novo; //colocar o novo nó no fim
 // }
 
+produto *novo_produto(){
+   produto *novo = malloc(sizeof(produto));
+   printf("Nome do produto: ");
+   scanf("%s",((*novo).nome));
+   printf("Preço: ");
+   scanf("%f",&((*novo).preco));
+   return novo;
+}
+
 int main(void)
 {  
    int auxiliar = 9;
