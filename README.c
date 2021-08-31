@@ -9,22 +9,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct{
-	int numero;
-} numList;
 
-struct tree{
-	numList *dado;
-	struct tree *left, *right;
-}typedef Tree;
+typedef struct lista {
+   struct no *first;
+} Lista;
 
+typedef struct no {
+   int *number;
+   struct no *next;
+} No;
 
-lista *create_lista(){
-   return NULL;
-}
+void adicionar(Lista* lista, No var){
+   No* new = malloc(sizeof(No));
 
-Tree *create_tree(){
-	return NULL;
+   new->number = var.number;
+
+   if (lista->first == NULL){
+      lista->first = new;
+   }
+   else{
+	No* atual = Lista->first; //começar no primeiro
+    	while (atual->next != NULL){ //navegar até ao fim
+        	atual = atual->next;
+    }
+
+    atual->prox = novo; //colocar o novo nó no fim
 }
 
 int main(void)
