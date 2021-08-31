@@ -13,8 +13,7 @@
 
 
 typedef struct{
-   char nome[30];
-   float preco; 
+   int number; 
 } produto;
 
 
@@ -22,7 +21,6 @@ typedef struct lstItem{
    produto dado;
    struct lstItem *next;
 } lstProduto;
-
 
 
 /* Criação da lista: retorna uma lista vazia */
@@ -34,12 +32,12 @@ lstProduto *cria_lista(){
    Imprime a lista.
    Esta função é um exemplo de como percorrer uma lista encadeada.
 */
-void print(lstProduto *lista){
+void imprime_lista(lstProduto *lista){
    /* "atual" é um ponteiro para o elemento da lista que está sendo examinado. Inicialmente, aponta para o primeiro elemento */
    lstProduto *atual = lista; 
 
    while(atual!=NULL){
-      printf(">>Nome: %s; Preco: %f\n", (*atual).dado.nome, atual->dado.preco);
+      printf(">>%d", (*atual).dado);
       atual = atual->next;
    }
 }
@@ -52,69 +50,46 @@ lstProduto *insere_no_fim(lstProduto *lista, produto dado){
 	novo->dado = dado;
 	novo->next = NULL;
 	
-	if(lista = NULL)
+	if(lista == NULL)
 		lista = novo;
 	else{
 		lstProduto *ultimo = lista;
-		while(ultimo->next != NULL)
+		while(ultimo->next != NULL){
 			ultimo=ultimo->next;
+		}
 		ultimo->next = novo;
-		//novo->prev = ultimo;
 	}
 	return lista;
 }
 			
-// void adicionar(Lista* lista, No var){
-//    No* new = malloc(sizeof(No));
-
-//    new->number = var.number;
-
-//    if (lista->first == NULL){
-//       lista->first = new;
-//    }
-//    else{
-// 	No* atual = Lista->first; //começar no primeiro
-//     	while (atual->next != NULL){ //navegar até ao fim
-//         	atual = atual->next;
-//     }
-
-//     atual->prox = novo; //colocar o novo nó no fim
-// }
-
 produto *novo_produto(){
    produto *novo = malloc(sizeof(produto));
-   printf("Nome do produto: ");
-   scanf("%s",((*novo).nome));
-   printf("Preço: ");
-   scanf("%f",&((*novo).preco));
+   printf("Digite um número: ");
+   scanf("%d",((*novo).number));
    return novo;
 }
 
 int main(void)
 {  
    int auxiliar = 9;
-   lista *LST = cria_lista();
+   lstProduto *LST = cria_lista();
 
    while(auxiliar != 0){
       printf("Especifique o comando:\n");
       printf("2 -> Imprimir lista\n");
       printf("3 -> Inserir no inicio\n");
-      printf("4 -> Inverter lista\n");
       printf("0 -> Parar\n");
 
       scanf("%d" ,&auxiliar);
 
       if(auxiliar == 2){
          imprime_lista(LST);
-         printf("\n");
+         printf("/n");
       }
          
       if(auxiliar == 3){
          produto *novo = novo_produto(); 
-         lista = insere_no_fim(lista, *novo);
-      }
-      if(auxiliar == 4){
-         LST = inverte(LST);
+         LST = insere_no_fim(LST, *novo);
       }
    }
    return 0;
