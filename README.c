@@ -28,8 +28,6 @@ int novo_num();
 
 /*--------------------Funções-Árvore----------------------*/
 node *insert(node*, int); //inserir na árvore
-node *Delete(node*, int); //deletar nó
-void preorder(node*); //por árvore em preorder
 void inorder(node*); //por árvore 'inorder'
 int height(node*); //altura árvore
 node *rotateRight(node*); //fç rotacionar direita
@@ -162,52 +160,6 @@ node *insert(node *Tree, int x)
 	return (Tree);
 }
 
-node *Delete(node *Tree, int x)
-{
-	node *p;
-	if (Tree == NULL) {
-		return NULL;
-	}
-	else
-		if (x > Tree->data) // insert in right subtree
-		{
-			Tree->right = Delete(Tree->right, x);
-			if (BF(T) == 2)
-				if (BF(Tree->left) >= 0)
-					Tree = LL(Tree);
-				else
-					Tree = LR(Tree);
-		}
-		else
-			if (x < Tree->data) {
-				Tree->left = Delete(Tree->left, x);
-				if (BF(Tree) == -2) //Rebalance during windup
-					if (BF(Tree->right) <= 0)
-						Tree = RR(Tree);
-					else
-						Tree = RL(Tree);
-			}
-			else {
-				//data to be deleted is found
-				if (Tree->right != NULL) { //delete its inorder succesor
-					p = Tree->right;
-					while (p->left != NULL)
-						p = p->left;
-					Tree->data = p->data;
-					Tree->right = Delete(Tree->right, p->data);
-					if (BF(Tree) == 2)//Rebalance during windup
-						if (BF(Tree->left) >= 0)
-							Tree = LL(Tree);
-						else
-							Tree = LR(Tree); 
-				}
-				else
-					return (Tree->left);
-			}
-	Tree->ht = height(Tree);
-	return (Tree);
-}
-
 int height(node *Tree) //altura da árvore
 {
 	int lh, rh;
@@ -285,15 +237,6 @@ void print(node *Tree){
 	
 	if(Tree != NULL){
 		printf("%d(FB=%d)", Tree->data, FatBal(Tree));
-	}
-}
-
-void preorder(node *Tree)
-{
-	if (Tree != NULL) {
-		printf("%d(FB=%d)", Tree->data, FatBal(Tree));
-		preorder(Tree->left);
-		preorder(Tree->right);
 	}
 }
 
