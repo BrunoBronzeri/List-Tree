@@ -237,7 +237,7 @@ void inorder(node *Tree)
 {
 	if (Tree != NULL) {
 		inorder(Tree->left);
-		printf("%d(FB=%d)", Tree->data, FatBal(Tree));
+		printf("%d(FB=%d); ", Tree->data, FatBal(Tree));
 		inorder(Tree -> right);
 	}
 }
