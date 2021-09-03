@@ -157,25 +157,25 @@ node *insert(node *Tree, int x)
 						Tree = LR(Tree);
 			}
 	Tree->ht = height(Tree);
-	return (Tree);
+	return Tree;
 }
 
 int height(node *Tree) //altura da árvore
 {
 	int lh, rh;
-	if (Tree == NULL)
-		return (0);
-	if (Tree->left == NULL)
+	if(Tree == NULL)
+		return 0;
+	if(Tree->left == NULL)
 		lh = 0;
 	else
 		lh = 1 + Tree->left->ht;
-	if (Tree->right == NULL)
+	if(Tree->right == NULL)
 		rh = 0;
 	else
 		rh = 1 + Tree->right->ht;
-	if (lh > rh)
-		return (lh);
-	return (rh);
+	if(lh > rh)
+		return lh;
+	return rh;
 }
 
 node *rotateRight(node *Tree)
@@ -204,21 +204,21 @@ node *LR(node *Tree)
 {
 	Tree->left = rotateLeft(Tree->left);
 	Tree = rotateRight(Tree);
-	return (Tree);
+	return Tree;
 }
 
 node *RL(node *Tree)
 {
 	Tree->right = rotateRight(Tree->right);
 	Tree = rotateLeft(Tree);
-	return (Tree);
+	return Tree;
 }
 
 int FatBal(node *Tree) //fator de balanceamento
 {
 	int lh, rh; //altura esq / altura dir
 	if(Tree == NULL)
-		return (0);
+		return 0;
 
 	if(Tree->left == NULL)
 		lh = 0;
