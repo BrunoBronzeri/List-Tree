@@ -233,13 +233,6 @@ int FatBal(node *Tree) //fator de balanceamento
 	return (lh - rh);
 }
 
-void print(node *Tree){
-	
-	if(Tree != NULL){
-		printf("%d(FB=%d)", Tree->data, FatBal(Tree));
-	}
-}
-
 void inorder(node *Tree)
 {
 	if (Tree != NULL) {
