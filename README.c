@@ -28,6 +28,8 @@ int novo_num();
 
 /*--------------------Funções-Árvore----------------------*/
 node *insert(node*, int); //inserir na árvore
+node *delete(node *, int);
+void preorder(node *);
 void inorder(node*); //por árvore 'inorder'
 int height(node*); //altura árvore
 node *rotateRight(node*); //fç rotacionar direita
@@ -49,6 +51,7 @@ int main(void){
       printf("1 -> Inserir na lista\n");
       printf("2 -> Imprimir lista\n");
       printf("3 -> Imprimir arvore\n");
+      printf("4 -> Delete/n"); //commit
       printf("0 -> Parar\n");
 
       scanf("%d" , &auxiliar);
@@ -81,6 +84,11 @@ int main(void){
 	    	system("PAUSE");
 	    	break;	
 			} 
+	      case 4:{
+		      printf("\nEnter a data:");
+		scanf("%d",& x);
+		root = Delete(root, x);
+		break;
 	    }
 	}
    return 0;
@@ -160,6 +168,53 @@ node *insert(node *Tree, int x)
 	return Tree;
 }
 
+node * Delete(node * T, int x)
+{
+	node * p;
+	if (Tree == NULL) {
+		return NULL;
+	}
+	else
+		if (x > T -> data) // inserir na sub-árvore da esquerda
+		{
+			T -> right=Delete(Tree -> right, x);
+			if (FatBal(Tree) == 2)
+				if (Fatbal(Tree -> left) >= 0)
+					Tree = LL(Tree);
+				else
+					Tree = LR(Tree);
+		}
+		else
+			if (x < Tree -> data) {
+				Tree -> left=Delete(Tree -> left, x);
+				if (FatBal(Tree) == -2) //Rebalance during windup
+					if (FatBal(Tree -> right) <= 0)
+						Tree = RR(Tree);
+					else
+						Tree = RL(Tree);
+			}
+			else {
+				//data to be deleted is found
+				if (Tree -> right != NULL) { //delete its inorder succesor
+					p = Tree -> right;
+					while (p -> left != NULL)
+						p = p -> left;
+					Tree -> data=p -> data;
+					Tree -> right=Delete(Tree -> right, p -> data);
+					if (FatBal(Tree) == 2)//Rebalance during windup
+						if (FatBal(Tree -> left) >= 0)
+							Tree = LL(Tree);
+						else
+							Tree = LR(Tree); \
+				}
+				else
+					return (Tree -> left);
+			}
+	Tree -> ht=height(Tree);
+	return (Tree);
+}
+
+	
 int height(node *Tree) //altura da árvore
 {
 	int lh, rh;
@@ -239,5 +294,15 @@ void inorder(node *Tree)
 		inorder(Tree->left);
 		printf("%d(FB=%d); ", Tree->data, FatBal(Tree));
 		inorder(Tree -> right);
+	}
+	preorder();
+}
+
+void preorder(node * Tree)
+{
+	if (Tree != NULL) {
+		printf("%d(FB=%d)", Tree -> data, FatBal(Tree));
+		preorder(Tree -> left);
+		preorder(Tree -> right);
 	}
 }
