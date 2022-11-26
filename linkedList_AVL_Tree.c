@@ -46,7 +46,7 @@ int main(void){
    lstNum *LST = cria_lista();
 
    while(auxiliar != 0){
-   	system("CLS");
+        system("CLS");
       printf("Especifique o comando:\n");
       printf("1 -> Inserir na lista\n");
       printf("2 -> Imprimir lista\n");
@@ -58,19 +58,17 @@ int main(void){
     	
       switch(auxiliar){
       	case 1:{
-			int novo = novo_num(); 
+		int novo = novo_num(); 
          	LST = insere_no_fim(LST, novo);
       	 	break;
 			} 
-	
       	case 2:{
-			printf("Lista: ");
+		printf("Lista: ");
         	imprime_lista(LST);
          	printf("\n");
          	system("PAUSE");
         	break;
 			}
-         
     	case 3:{
 			printf("Arvore Inorder: ");
       		int i;
