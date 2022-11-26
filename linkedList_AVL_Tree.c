@@ -1,10 +1,10 @@
 //List-Tree
-// Implementar um programa em linguagem C em que o usu·rio informe uma sÈrie de n˙meros
-// inteiros que devem ser armazenados em uma lista encadeada. O usu·rio poder· informar tantos
-// n˙meros quanto desejar, na ordem em que desejar, e todos eles devem ser armazenados dentro
+// Implementar um programa em linguagem C em que o usu√°rio informe uma s√©rie de n√∫meros
+// inteiros que devem ser armazenados em uma lista encadeada. O usu√°rio poder√° informar tantos
+// n√∫meros quanto desejar, na ordem em que desejar, e todos eles devem ser armazenados dentro
 // da lista.
-// ApÛs o usu·rio ter informado todos os n˙meros, a lista deve ser transformada em uma ·rvore
-// AVL. Ao final, o programa deve imprimir a lista original e ·rvore gerada a partir dela.
+// Ap√≥s o usu√°rio ter informado todos os n√∫meros, a lista deve ser transformada em uma √°rvore
+// AVL. Ao final, o programa deve imprimir a lista original e √°rvore gerada a partir dela.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,26 +14,26 @@ typedef struct lstItem{ //struct da lista
    struct lstItem *next;
 } lstNum;
 
-typedef struct node{ //struct da ·rvore
+typedef struct node{ //struct da √°rvore
 	int data;
 	struct node *left, *right;
-	int ht; //para altura da ·rvore ('height tree')
+	int ht; //para altura da √°rvore ('height tree')
 } node;
 
-/*---------------------FunÁıes-Lista----------------------*/
+/*---------------------Fun√ß√µes-Lista----------------------*/
 lstNum *cria_lista();
 void imprime_lista(lstNum*);
 lstNum *insere_no_fim(lstNum*, int);
 int novo_num();
 
-/*--------------------FunÁıes-¡rvore----------------------*/
-node *insert(node*, int); //inserir na ·rvore
-node *Delete(node*, int); //sem uso -> deletar nÛ
-void preorder(node*); // sem uso -> por ·rvore em preorder
-void inorder(node*); //por ·rvore 'inorder'
-int height(node*); //altura ·rvore
-node *rotateRight(node*); //fÁ rotacionar direita
-node *rotateLeft(node*); //fÁ rotacionar esquerda
+/*--------------------Fun√ß√µes-√Årvore----------------------*/
+node *insert(node*, int); //inserir na √°rvore
+node *Delete(node*, int); //sem uso -> deletar n√≥
+void preorder(node*); // sem uso -> por √°rvore em preorder
+void inorder(node*); //por √°rvore 'inorder'
+int height(node*); //altura √°rvore
+node *rotateRight(node*); //f√ß rotacionar direita
+node *rotateLeft(node*); //f√ß rotacionar esquerda
 node *LR(node*); //joga da esq pra dir
 node *RL(node*); //joga dir para esq
 int FatBal(node*); //calcular fator de balanceamento
@@ -74,7 +74,7 @@ int main(void){
     	case 3:{
 			printf("Arvore Inorder: ");
       		int i;
-      		while(LST!=NULL){ //alimentar a ·rvore com a lista
+      		while(LST!=NULL){ //alimentar a √°rvore com a lista
       		tree = insert(tree, LST->dado);
       		LST = LST->next;
       	    }
@@ -88,15 +88,15 @@ int main(void){
    return 0;
 }
 
-// CriaÁ„o da lista: retorna uma lista vazia
+// Cria√ß√£o da lista: retorna uma lista vazia
 lstNum *cria_lista(){
    return NULL;
 }
 
 //    Imprime a lista.
-//    Esta funÁ„o È um exemplo de como percorrer uma lista encadeada.
+//    Esta fun√ß√£o √© um exemplo de como percorrer uma lista encadeada.
 void imprime_lista(lstNum *lista){
-//    "atual" È um ponteiro para o elemento da lista que est· sendo examinado. Inicialmente, aponta para o primeiro elemento
+//    "atual" √© um ponteiro para o elemento da lista que est√° sendo examinado. Inicialmente, aponta para o primeiro elemento
    lstNum *atual = lista; 
 
    while(atual!=NULL){
@@ -126,12 +126,12 @@ lstNum *insere_no_fim(lstNum *lista, int dado){
 			
 int novo_num(){
    int novo = 0;
-   printf("Digite um n˙mero: ");
+   printf("Digite um n√∫mero: ");
    scanf("%d", &novo);
    return novo;
 }
 
-/*-----------------------------FunÁıes-¡rovre------------------------------*/
+/*-----------------------------Fun√ß√µes-√Årovre------------------------------*/
 node *insert(node *Tree, int x)
 {
 	if (Tree == NULL){
@@ -141,7 +141,7 @@ node *insert(node *Tree, int x)
 		Tree->right = NULL;
 	}
 	
-	else if (x > Tree->data) { // inserir na sub-·rvore da direita
+	else if (x > Tree->data) { // inserir na sub-√°rvore da direita
 			Tree->right = insert(Tree->right, x);
 			if (FatBal(Tree) == -2)
 				if (x > Tree->right->data)
@@ -150,7 +150,7 @@ node *insert(node *Tree, int x)
 					Tree = rotateRight(Tree);
 		}
 		
-		else if (x < Tree->data){ // inserir na sub-·rvore da esquerda
+		else if (x < Tree->data){ // inserir na sub-√°rvore da esquerda
 				Tree->left = insert(Tree->left, x);
 				if (FatBal(Tree) == 2)
 					if (x < Tree->left->data)
@@ -208,7 +208,7 @@ node *insert(node *Tree, int x)
 //	return (Tree);
 //}
 
-int height(node *Tree) //altura da ·rvore
+int height(node *Tree) //altura da √°rvore
 {
 	int lh, rh;
 	if(Tree == NULL)
